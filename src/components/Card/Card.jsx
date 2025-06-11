@@ -1,4 +1,4 @@
-export function Card({image, title}) {
+export function Card({id, title, image}) {
     return(
         <div>
             <div>
