@@ -34,7 +34,6 @@ export function Homepage() {
         currentShow &&
         <>
             <Preview 
-                id={currentShow.id} 
                 title={currentShow.name} 
                 description={currentShow.overview}
                 image={`${API.POSTER_BASE_URL}${currentShow.backdrop_path}`}

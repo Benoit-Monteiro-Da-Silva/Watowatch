@@ -21,3 +21,14 @@ export const findRecommandations = async (id) => {
         return {}
     }
 }
+
+export const findTvShow = async (id) => {
+    try {
+        const apiData = await fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=${API.KEY}&append_to_response=credits`)
+        const response = await apiData.json()
+        return response
+    } catch(error) {
+        console.error(`Error: ${error}`)
+        return {}
+    }
+}

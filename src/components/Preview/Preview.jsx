@@ -1,6 +1,6 @@
 import style from "./Preview.module.css"
 
-export function Preview({id, title, description, image, evaluation}) {
+export function Preview({title, description, image, evaluation}) {
     return(
         <div>
             <h2>{title}</h2>
