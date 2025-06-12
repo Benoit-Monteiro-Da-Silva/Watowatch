@@ -7,6 +7,8 @@ import { ROUTES } from "../../constants/routes"
 import style from "./Detailpage.module.css"
 import { InfoLabelList } from "../../components/InfoLabelList/InfoLabelList"
 import { InfoLabel } from "../../components/InfoLabel/InfoLabel"
+import { ActorCardList } from "../../components/ActorCardList/ActorCardList"
+import { CreatorList } from "../../components/CreatorList/CreatorList"
 
 export function Detailpage() {
     const [currentShow, setCurrentShow] = useState(null)
@@ -16,10 +18,6 @@ export function Detailpage() {
         const currentShowData = await findTvShow(id)
         setCurrentShow(currentShowData)
     }
-
-    useEffect(() => {
-        loadCurrentShow(id)
-    }, [])
 
     const formatShowInfoList = currentShow ? [
         {
@@ -48,6 +46,12 @@ export function Detailpage() {
         },
     ] : []
 
+
+    useEffect(() => {
+        loadCurrentShow(id)
+    }, [])
+
+
     return(
         currentShow && 
         <div className={style.detailPage}>
@@ -60,10 +64,11 @@ export function Detailpage() {
                 description={currentShow.overview}
                 evaluation={currentShow.vote_average}/>
             <h2>Created by</h2>
-            <InfoLabel value={currentShow.created_by[0].name}/>
+            <CreatorList list={currentShow.created_by}/>
             <h2>Show Info</h2>
             <InfoLabelList list={formatShowInfoList}/>
             <h2>Main Cast</h2>
+            <ActorCardList list={currentShow.credits.cast}/>
         </div>
     )
 }
