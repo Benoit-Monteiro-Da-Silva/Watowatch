@@ -1,9 +1,10 @@
 import { ActorCard } from "../ActorCard/ActorCard";
 import { API } from "../../constants/api";
+import style from "./ActorCardList.module.css"
 
 export function ActorCardList({list}) {
     return(
-        <ul>
+        <ul className={style.list}>
             {list.map(item => (
                 <li key={item.id}>
                     <ActorCard 

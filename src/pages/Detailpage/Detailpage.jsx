@@ -6,7 +6,6 @@ import { API } from "../../constants/api"
 import { ROUTES } from "../../constants/routes"
 import style from "./Detailpage.module.css"
 import { InfoLabelList } from "../../components/InfoLabelList/InfoLabelList"
-import { InfoLabel } from "../../components/InfoLabel/InfoLabel"
 import { ActorCardList } from "../../components/ActorCardList/ActorCardList"
 import { CreatorList } from "../../components/CreatorList/CreatorList"
 
