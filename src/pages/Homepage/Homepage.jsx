@@ -3,6 +3,7 @@ import { CardList } from "../../components/CardList/CardList"
 import { findPopularTvShows, findRecommandations } from "../../utils/apiFetch"
 import { Preview } from "../../components/Preview/Preview"
 import { API } from "../../constants/api"
+import style from "./Homepage.module.css"
 
 export function Homepage() {
     const [currentShow, setCurrentShow] = useState(null)
@@ -31,15 +32,19 @@ export function Homepage() {
     }, [currentShow])
 
     return(
-        currentShow &&
-        <>
+        currentShow && recommendations.length !==0 &&
+        <div className={style.homepage}>
             <Preview 
                 title={currentShow.name} 
                 description={currentShow.overview}
-                image={`${API.POSTER_BASE_URL}${currentShow.backdrop_path}`}
                 evaluation={currentShow.vote_average}/>
-            <h3>You may also like:</h3>
-            <CardList list={recommendations}/>
-        </>
+            <div className={style.imgContainer}>
+                <img src={`${API.POSTER_BASE_URL}${currentShow.backdrop_path}`} alt=''/>
+            </div>
+            <div className={style.recommendations}>
+                <h3>You may also like:</h3>
+                <CardList list={recommendations}/>
+            </div>
+        </div>
     )
 }
